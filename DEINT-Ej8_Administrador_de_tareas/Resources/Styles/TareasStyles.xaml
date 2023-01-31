@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xalm-comp compile="true"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <DataTemplate x:Key="CategoriaStyle">
+        <Frame BackgroundColor="White">
+            <Grid RowDefinitions=".2*, *, .2*">
+                <Label Grid.Row="0" Text="{Binding Num_tareas, StringFormat='{0} Tasks'}" VerticalOptions="Center"/>
+                <Label Grid.Row="1" Text="{Binding Nombre}" VerticalOptions="Center"/>
+            </Grid>
+        </Frame>
+    </DataTemplate>
+</ResourceDictionary>

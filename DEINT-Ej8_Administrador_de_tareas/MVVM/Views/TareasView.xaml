@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DEINT_Ej8_Administrador_de_tareas.MVVM.Views.TareasView"
+             Title="Mis tareas">
+
+    <Grid RowDefinitions="*, *, *">
+        <Label Grid.Row="0" Text="Mis tareas" />
+        <CollectionView Grid.Row="1"
+                ItemsSource="{Binding Categorias}" 
+                ItemTemplate="{DynamicResource CategoriaStyle}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.Header>
+                <Label Text="CATEGORIAS"/>
+            </CollectionView.Header>
+        </CollectionView>
+    </Grid>
+    
+</ContentPage>
