@@ -10,8 +10,8 @@ namespace DEINT_Ej8_Administrador_de_tareas.MVVM.Models
     [AddINotifyPropertyChangedInterface]
     public class CategoriaModel
     {
+        public int Id { get; set; }
         public string Nombre { get; set; }
-        public List<TareaModel> Tareas { get; set; } = new List<TareaModel>();
-        public int Num_tareas { get { return Tareas.Count; } }
+        public int ContTareas { get; set; }
     }
 }

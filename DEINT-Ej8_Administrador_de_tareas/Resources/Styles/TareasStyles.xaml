@@ -2,12 +2,19 @@
 <?xalm-comp compile="true"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Style TargetType="ContentPage" x:Key="contentPage">
+        <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+    </Style>
     <DataTemplate x:Key="CategoriaStyle">
-        <Frame BackgroundColor="White">
-            <Grid RowDefinitions=".2*, *, .2*">
-                <Label Grid.Row="0" Text="{Binding Num_tareas, StringFormat='{0} Tasks'}" VerticalOptions="Center"/>
-                <Label Grid.Row="1" Text="{Binding Nombre}" VerticalOptions="Center"/>
-            </Grid>
-        </Frame>
+        <Border>
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20" />
+            </Border.StrokeShape>
+            <VerticalStackLayout Padding="20">
+                <Label Text="{Binding ContTareas, StringFormat='{0} Tareas'}" />
+                <Label Text="{Binding Nombre}" HorizontalTextAlignment="Center" />
+                <ProgressBar />
+            </VerticalStackLayout>
+        </Border>
     </DataTemplate>
 </ResourceDictionary>

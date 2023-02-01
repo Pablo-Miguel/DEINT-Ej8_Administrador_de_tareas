@@ -2,20 +2,33 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DEINT_Ej8_Administrador_de_tareas.MVVM.Views.TareasView"
-             Title="Mis tareas">
+             Title="Mis tareas"
+             Style="{StaticResource contentPage}">
 
-    <Grid RowDefinitions="*, *, *">
+    <Grid RowDefinitions=".1*, .3*, .6*">
         <Label Grid.Row="0" Text="Mis tareas" />
-        <CollectionView Grid.Row="1"
+        <VerticalStackLayout Grid.Row="1">
+            <Label Text="CATEGORIAS"/>
+            <CollectionView 
                 ItemsSource="{Binding Categorias}" 
                 ItemTemplate="{DynamicResource CategoriaStyle}">
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
-            </CollectionView.ItemsLayout>
-            <CollectionView.Header>
-                <Label Text="CATEGORIAS"/>
-            </CollectionView.Header>
-        </CollectionView>
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="5" />
+                </CollectionView.ItemsLayout>
+            </CollectionView>
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="2">
+            <Label Text="TAREAS PENDIENTES" />
+            <ScrollView>
+                <CollectionView 
+                ItemsSource="{Binding Categorias}" 
+                ItemTemplate="{DynamicResource CategoriaStyle}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="5" />
+                    </CollectionView.ItemsLayout>
+                </CollectionView>
+            </ScrollView>
+        </VerticalStackLayout>
     </Grid>
     
 </ContentPage>

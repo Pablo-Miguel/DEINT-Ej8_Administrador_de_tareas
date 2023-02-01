@@ -11,6 +11,7 @@ namespace DEINT_Ej8_Administrador_de_tareas.MVVM.Models
     public class TareaModel
     {
         public string Nombre { get; set; }
+        public int Categ_id { get; set; }
         public bool Terminada { get; set; }
     }
 }

@@ -11,59 +11,63 @@ namespace DEINT_Ej8_Administrador_de_tareas.MVVM.ViewModels
     public class TareasViewModel
     {
         public ObservableCollection<CategoriaModel> Categorias { get; set; }
-
+        public ObservableCollection<TareaModel> Tareas { get; set; }
         public TareasViewModel()
         {
             Categorias = new ObservableCollection<CategoriaModel>() {
                 new CategoriaModel(){
-                    Nombre = "Curso .NET MAUI",
-                    Tareas = new List<TareaModel>()
-                    {
-                        new TareaModel()
-                        {
-                            Nombre = "Actualizar ficheros",
-                            Terminada = false
-                        },
-                        new TareaModel()
-                        {
-                            Nombre = "Planear siguiente curso",
-                            Terminada = true
-                        }
-                    }
+                    Id = 0,
+                    Nombre = "Curso .NET MAUI"
                 },
                 new CategoriaModel(){
-                    Nombre = "Tutoriales",
-                    Tareas = new List<TareaModel>()
-                    {
-                        new TareaModel()
-                        {
-                            Nombre = "ASP.NET en YouTube",
-                            Terminada = false
-                        },
-                        new TareaModel()
-                        {
-                            Nombre = "XAML",
-                            Terminada = true
-                        }
-                    }
+                    Id = 1,
+                    Nombre = "Tutoriales"
                 },
                 new CategoriaModel(){
-                    Nombre = "Compras",
-                    Tareas = new List<TareaModel>()
-                    {
-                        new TareaModel()
-                        {
-                            Nombre = "JavaScript",
-                            Terminada = false
-                        },
-                        new TareaModel()
-                        {
-                            Nombre = "Java",
-                            Terminada = true
-                        }
-                    }
+                    Id = 2,
+                    Nombre = "Compras"
+                }
+            };
+            Tareas = new ObservableCollection<TareaModel>()
+            {
+                new TareaModel()
+                {
+                    Nombre = "Actualizar ficheros",
+                    Categ_id = 0,
+                    Terminada = false
+                },
+                new TareaModel()
+                {
+                    Nombre = "Planear siguiente curso",
+                    Categ_id = 0,
+                    Terminada = false
+                },
+                new TareaModel()
+                {
+                    Nombre = "ASP .NET en YouTube",
+                    Categ_id = 1,
+                    Terminada = false
+                },
+                new TareaModel()
+                {
+                    Nombre = "XAML",
+                    Categ_id = 1,
+                    Terminada = false
+                },
+                new TareaModel()
+                {
+                    Nombre = "JavaScript",
+                    Categ_id = 2,
+                    Terminada = true
                 },
             };
+
+            foreach (CategoriaModel categoria in Categorias)
+            {
+                int cont = Tareas.Where( x => x.Categ_id == categoria.Id ).ToList().Count();
+                categoria.ContTareas = cont;
+            }
+
         }
     }
 }
