@@ -6,29 +6,31 @@
              Style="{StaticResource contentPage}">
 
     <Grid RowDefinitions=".1*, .3*, .6*">
-        <Label Grid.Row="0" Text="Mis tareas" />
-        <VerticalStackLayout Grid.Row="1">
-            <Label Text="CATEGORIAS"/>
-            <CollectionView 
+        <Label StyleClass="Title" Grid.Row="0" Text="Mis tareas" />
+        <Grid Grid.Row="1" RowDefinitions=".2*, .8*">
+            <Label Grid.Row="0" StyleClass="LightBlue, SubHeader" Text="CATEGORIAS" />
+            <CollectionView Grid.Row="1"
                 ItemsSource="{Binding Categorias}" 
                 ItemTemplate="{DynamicResource CategoriaStyle}">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Horizontal" ItemSpacing="5" />
                 </CollectionView.ItemsLayout>
             </CollectionView>
-        </VerticalStackLayout>
-        <VerticalStackLayout Grid.Row="2">
-            <Label Text="TAREAS PENDIENTES" />
-            <ScrollView>
-                <CollectionView 
-                ItemsSource="{Binding Categorias}" 
-                ItemTemplate="{DynamicResource CategoriaStyle}">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="5" />
-                    </CollectionView.ItemsLayout>
-                </CollectionView>
-            </ScrollView>
-        </VerticalStackLayout>
+        </Grid>
+        <Grid Grid.Row="2" RowDefinitions=".2*, .8*">
+            <Label Grid.Row="0" StyleClass="LightBlue, SubHeader" Text="TAREAS PENDIENTES" />
+            <CollectionView 
+                Grid.Row="1" 
+                ItemsSource="{Binding Tareas}" 
+                ItemTemplate="{DynamicResource TareasListStyle}"
+                ItemsUpdatingScrollMode="KeepLastItemInView">
+            </CollectionView>
+        </Grid>
+        <Button 
+            Grid.Row="2"
+            Text="+"
+            Style="{StaticResource CircularButton}"
+            Clicked="Button_Clicked"/>
     </Grid>
     
 </ContentPage>

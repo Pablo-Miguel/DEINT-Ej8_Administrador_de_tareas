@@ -9,4 +9,9 @@ public partial class TareasView : ContentPage
 		InitializeComponent();
 		BindingContext = new TareasViewModel();
 	}
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+
+    }
 }

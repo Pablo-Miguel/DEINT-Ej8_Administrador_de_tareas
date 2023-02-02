@@ -12,6 +12,6 @@ namespace DEINT_Ej8_Administrador_de_tareas.MVVM.Models
     {
         public string Nombre { get; set; }
         public int Categ_id { get; set; }
-        public bool Terminada { get; set; }
+        public bool Completado { get; set; }
     }
 }

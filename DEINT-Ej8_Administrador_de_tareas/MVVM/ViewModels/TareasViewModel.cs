@@ -34,40 +34,43 @@ namespace DEINT_Ej8_Administrador_de_tareas.MVVM.ViewModels
                 {
                     Nombre = "Actualizar ficheros",
                     Categ_id = 0,
-                    Terminada = false
+                    Completado = false
                 },
                 new TareaModel()
                 {
                     Nombre = "Planear siguiente curso",
                     Categ_id = 0,
-                    Terminada = false
+                    Completado = false
                 },
                 new TareaModel()
                 {
                     Nombre = "ASP .NET en YouTube",
                     Categ_id = 1,
-                    Terminada = false
+                    Completado = false
                 },
                 new TareaModel()
                 {
                     Nombre = "XAML",
                     Categ_id = 1,
-                    Terminada = false
+                    Completado = false
                 },
                 new TareaModel()
                 {
                     Nombre = "JavaScript",
                     Categ_id = 2,
-                    Terminada = true
+                    Completado = true
                 },
             };
+            updateTasks();
+        }
 
+        private void updateTasks()
+        {
             foreach (CategoriaModel categoria in Categorias)
             {
-                int cont = Tareas.Where( x => x.Categ_id == categoria.Id ).ToList().Count();
+                int cont = Tareas.Where(x => x.Categ_id == categoria.Id && !x.Completado).ToList().Count();
                 categoria.ContTareas = cont;
             }
-
         }
     }
 }
