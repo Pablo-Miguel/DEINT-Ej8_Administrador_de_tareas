@@ -36,39 +36,5 @@
         <Setter Property="HorizontalOptions" Value="End"/>
         <Setter Property="Clip" Value="{StaticResource circle}"/>
     </Style>
-    
-    <DataTemplate x:Key="CategoriaStyle">
-        <Border>
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="20" />
-            </Border.StrokeShape>
-            <VerticalStackLayout Padding="20">
-                <Label Text="{Binding ContTareas, StringFormat='{0} Tareas'}" />
-                <Label Text="{Binding Nombre}" HorizontalTextAlignment="Center" />
-                <ProgressBar />
-            </VerticalStackLayout>
-        </Border>
-    </DataTemplate>
-    
-    <DataTemplate x:Key="TareasListStyle">
-        <Frame BorderColor="Transparent">
-            <HorizontalStackLayout>
-                <CheckBox
-                    x:Name="checkBox"
-                    IsChecked="{Binding Completado}"
-                    VerticalOptions="Center"/>
-                <Label Text="{Binding Nombre}" VerticalOptions="Center">
-                    <Label.Triggers>
-                        <DataTrigger
-                            Binding="{Binding Source={x:Reference checkBox}, Path=IsChecked}"
-                            TargetType="Label"
-                            Value="True">
-                            <Setter Property="TextDecorations" Value="Strikethrough" />
-                        </DataTrigger>
-                    </Label.Triggers>
-                </Label>
-            </HorizontalStackLayout>
-        </Frame>
-    </DataTemplate>
-    
+
 </ResourceDictionary>

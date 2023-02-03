@@ -12,6 +12,7 @@ namespace DEINT_Ej8_Administrador_de_tareas.MVVM.Models
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public int ContTareas { get; set; }
+        public double ContTareas { get; set; }
+        public double Progress { get; set; }
     }
 }

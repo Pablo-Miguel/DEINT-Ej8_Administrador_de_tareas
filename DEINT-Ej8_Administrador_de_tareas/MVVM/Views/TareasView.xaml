@@ -10,20 +10,55 @@
         <Grid Grid.Row="1" RowDefinitions=".2*, .8*">
             <Label Grid.Row="0" StyleClass="LightBlue, SubHeader" Text="CATEGORIAS" />
             <CollectionView Grid.Row="1"
-                ItemsSource="{Binding Categorias}" 
-                ItemTemplate="{DynamicResource CategoriaStyle}">
+                ItemsSource="{Binding Categorias}">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Horizontal" ItemSpacing="5" />
                 </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border>
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="20" />
+                            </Border.StrokeShape>
+                            <VerticalStackLayout Padding="20">
+                                <Label Text="{Binding ContTareas, StringFormat='{0} Tareas'}" />
+                                <Label Text="{Binding Nombre}" HorizontalTextAlignment="Center" />
+                                <ProgressBar Progress="{Binding Progress}"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
             </CollectionView>
         </Grid>
         <Grid Grid.Row="2" RowDefinitions=".2*, .8*">
             <Label Grid.Row="0" StyleClass="LightBlue, SubHeader" Text="TAREAS PENDIENTES" />
             <CollectionView 
                 Grid.Row="1" 
-                ItemsSource="{Binding Tareas}" 
-                ItemTemplate="{DynamicResource TareasListStyle}"
+                ItemsSource="{Binding Tareas}"
                 ItemsUpdatingScrollMode="KeepLastItemInView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="Transparent">
+                            <HorizontalStackLayout>
+                                <CheckBox
+                                    x:Name="checkBox"
+                                    IsChecked="{Binding Completado}"
+                                    VerticalOptions="Center"
+                                    CheckedChanged="checkBox_CheckedChanged"/>      
+                                <Label Text="{Binding Nombre}" VerticalOptions="Center">
+                                    <Label.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding Source={x:Reference checkBox}, Path=IsChecked}"
+                                            TargetType="Label"
+                                            Value="True">
+                                            <Setter Property="TextDecorations" Value="Strikethrough" />
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
             </CollectionView>
         </Grid>
         <Button 

@@ -12,6 +12,7 @@ namespace DEINT_Ej8_Administrador_de_tareas.MVVM.ViewModels
     {
         public ObservableCollection<CategoriaModel> Categorias { get; set; }
         public ObservableCollection<TareaModel> Tareas { get; set; }
+
         public TareasViewModel()
         {
             Categorias = new ObservableCollection<CategoriaModel>() {
@@ -28,6 +29,7 @@ namespace DEINT_Ej8_Administrador_de_tareas.MVVM.ViewModels
                     Nombre = "Compras"
                 }
             };
+
             Tareas = new ObservableCollection<TareaModel>()
             {
                 new TareaModel()
@@ -61,15 +63,19 @@ namespace DEINT_Ej8_Administrador_de_tareas.MVVM.ViewModels
                     Completado = true
                 },
             };
+
             updateTasks();
         }
 
-        private void updateTasks()
+        public void updateTasks()
         {
             foreach (CategoriaModel categoria in Categorias)
             {
-                int cont = Tareas.Where(x => x.Categ_id == categoria.Id && !x.Completado).ToList().Count();
-                categoria.ContTareas = cont;
+                double totalTasks = Tareas.Where(x => x.Categ_id == categoria.Id).ToList().Count();
+                int contTasks = Tareas.Where(x => x.Categ_id == categoria.Id && !x.Completado).ToList().Count();
+                double complTasks = totalTasks - contTasks;
+                categoria.ContTareas = contTasks;
+                categoria.Progress = complTasks / totalTasks;
             }
         }
     }
