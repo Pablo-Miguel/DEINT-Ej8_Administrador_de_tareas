@@ -20,6 +20,6 @@ public partial class TareasView : ContentPage
 
     private void Button_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(null);
+        Navigation.PushAsync(new AnyadirView(tareasViewModel));
     }
 }

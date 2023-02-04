@@ -1,4 +1,5 @@
 ﻿using DEINT_Ej8_Administrador_de_tareas.MVVM.Models;
+using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace DEINT_Ej8_Administrador_de_tareas.MVVM.ViewModels
 {
+    [AddINotifyPropertyChangedInterface]
     public class TareasViewModel
     {
         public ObservableCollection<CategoriaModel> Categorias { get; set; }
@@ -35,26 +37,22 @@ namespace DEINT_Ej8_Administrador_de_tareas.MVVM.ViewModels
                 new TareaModel()
                 {
                     Nombre = "Actualizar ficheros",
-                    Categ_id = 0,
-                    Completado = false
+                    Categ_id = 0
                 },
                 new TareaModel()
                 {
                     Nombre = "Planear siguiente curso",
-                    Categ_id = 0,
-                    Completado = false
+                    Categ_id = 0
                 },
                 new TareaModel()
                 {
                     Nombre = "ASP .NET en YouTube",
-                    Categ_id = 1,
-                    Completado = false
+                    Categ_id = 1
                 },
                 new TareaModel()
                 {
                     Nombre = "XAML",
-                    Categ_id = 1,
-                    Completado = false
+                    Categ_id = 1
                 },
                 new TareaModel()
                 {

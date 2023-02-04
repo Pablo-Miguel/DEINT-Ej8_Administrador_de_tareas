@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DEINT_Ej8_Administrador_de_tareas.MVVM.Views.AnyadirView"
+             Title="Añadir nueva tarea">
+    <Grid RowDefinitions=".1*, .8*, .1*">
+        <Entry x:Name="txt" Grid.Row="0" Placeholder="Introduce nueva tarea" HorizontalTextAlignment="Center" FontSize="Title"/>
+        <CollectionView
+                Grid.Row="1"
+                RadioButtonGroup.GroupName="categorias"
+                ItemsSource="{Binding TareasViewModel.Categorias}"
+                Margin="30">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2" VerticalItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Padding="20">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5" />
+                        </Border.StrokeShape>
+                        <RadioButton 
+                                Content="{Binding Nombre}"
+                                Value="{Binding Id}"
+                                PropertyChanged="RadioButton_PropertyChanged"/>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center">
+            <Button 
+                Text="Añadir tarea" 
+                CornerRadius="20"
+                Command="{Binding AnyadirTarea}" 
+                CommandParameter="{Binding Source={x:Reference txt}, Path=Text}"
+                Clicked="Button_Clicked"/>
+            <Button 
+                Text="Añadir categoría" 
+                CornerRadius="20"
+                Command="{Binding AnyadirCategoria}"/>
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>
