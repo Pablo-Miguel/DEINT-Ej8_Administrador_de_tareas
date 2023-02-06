@@ -12,17 +12,17 @@ public partial class AnyadirView : ContentPage
         BindingContext = anyadirViewModel;
 	}
 
-    private void RadioButton_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-    {
-        //RadioButton rb = sender as RadioButton;
-        //anyadirViewModel.SelectedCategory = (int)rb.Value;
-    }
-
     private void Button_Clicked(object sender, EventArgs e)
     {
         if (anyadirViewModel.SelectedCategory != -1) {
             anyadirViewModel.SelectedCategory = -1;
             Navigation.PopToRootAsync();
         }
+    }
+
+    private void RadioButton_CheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        RadioButton rb = sender as RadioButton;
+        anyadirViewModel.SelectedCategory = (int) rb.Value;
     }
 }

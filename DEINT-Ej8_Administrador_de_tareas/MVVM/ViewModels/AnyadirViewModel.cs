@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +8,7 @@ using System.Windows.Input;
 
 namespace DEINT_Ej8_Administrador_de_tareas.MVVM.ViewModels
 {
+    [AddINotifyPropertyChangedInterface]
     public class AnyadirViewModel
     {
         public TareasViewModel TareasViewModel { get; set; }

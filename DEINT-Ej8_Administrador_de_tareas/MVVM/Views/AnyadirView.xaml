@@ -7,7 +7,6 @@
         <Entry x:Name="txt" Grid.Row="0" Placeholder="Introduce nueva tarea" HorizontalTextAlignment="Center" FontSize="Title"/>
         <CollectionView
                 Grid.Row="1"
-                RadioButtonGroup.GroupName="categorias"
                 ItemsSource="{Binding TareasViewModel.Categorias}"
                 Margin="30">
             <CollectionView.ItemsLayout>
@@ -21,9 +20,10 @@
                             <RoundRectangle CornerRadius="5" />
                         </Border.StrokeShape>
                         <RadioButton 
+                                GroupName="content"
                                 Content="{Binding Nombre}"
                                 Value="{Binding Id}"
-                                PropertyChanged="RadioButton_PropertyChanged"/>
+                                CheckedChanged="RadioButton_CheckedChanged"/>
                     </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
